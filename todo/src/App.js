@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Form from './components/Form';
+import Header from './components/Header';
+import TodosList from './components/TodosList';
 import './index.css';
 
 function App() {
@@ -19,17 +22,15 @@ function App() {
       "isDone": false
     }
   ]
+  const [input, setInput] = useState("");
+  const [todos, setTodos] = useState([]);
   console.log(tasks);
   return (
     <div className="todo">
-      <h1 className="todo-title">todo</h1>
+      <Header/>
       <div className="todo-todo">
-      <input type="text" name="" className="todo-todo__input"/>
-     <ul className="todo-todo__list">
-      {tasks.map((task, index) =>
-      <li className="todo-todo__list-item" key={index}>{task.title}</li>
-        )}
-      </ul>
+        <Form input={input} setInput={setInput} todos={todos} setTodos={setTodos}/>
+     <TodosList todos={todos} setTodos={setTodos}/>
       </div>
     </div>
   );
