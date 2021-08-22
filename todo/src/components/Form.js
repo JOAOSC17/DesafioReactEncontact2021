@@ -1,12 +1,33 @@
-import React from 'react'
-export default function Form({input, setInput, todos, setTodos}){
+import React, { useEffect } from 'react'
+export default function Form({input, setInput, todos, setTodos, editTodo, setEditTodo}){
+    const updateTodo =(id, title, isDone)=>{
+        const newTodo = todos.map((todo)=>
+        todo.id===id? {id, title, isDone} : todo
+    );
+        setTodos(newTodo);
+        setEditTodo('');
+    }
+    useEffect(()=>{
+        if(editTodo){
+            setInput(editTodo.title);
+        }else{
+            setInput('')
+        }
+},[setInput, editTodo])
+    function generateID(){
+        return Math.random().toString(36).substr(2,9);
+    }
     const onInputChange = (e)=>{
         setInput(e.target.value);
     }
     const onFormSubmit = (e)=>{
         e.preventDefault();
-        setTodos([...todos, {title: input, isDone:false}]);
+        if(!editTodo){
+        setTodos([...todos, {id:generateID(),title: input, isDone:false}]);
         setInput('');
+        }else{
+            updateTodo(editTodo.id, input, editTodo.isDone);
+        }
     }
     return (
         <form onSubmit={onFormSubmit}>
