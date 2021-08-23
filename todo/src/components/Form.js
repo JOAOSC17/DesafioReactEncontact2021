@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-export default function Form({input, setInput, todos, setTodos, editTodo, setEditTodo}){
+export default function ComponentsForm({input, setInput, todos, setTodos, editTodo, setEditTodo}){
     const updateTodo =(id, title, isDone)=>{
         const newTodo = todos.map((todo)=>
         todo.id===id? {id, title, isDone} : todo
@@ -37,3 +37,6 @@ export default function Form({input, setInput, todos, setTodos, editTodo, setEdi
         </form>
     )
 }
+
+// <button onClick={()=>()}>clear completed</button>
+// <button onClick={()=>()}>all</button>

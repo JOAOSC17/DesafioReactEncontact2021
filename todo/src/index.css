@@ -40,3 +40,12 @@ body{
   font-weight: 200;
   font-size: 30px;
 }
+a{
+  text-decoration: none;
+  color: black;
+}
+a:focus,
+a:active,
+a:visited{
+  background-color: #b83f45;
+}
