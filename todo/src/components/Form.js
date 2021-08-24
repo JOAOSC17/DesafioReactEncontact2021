@@ -31,12 +31,9 @@ export default function ComponentsForm({input, setInput, todos, setTodos, editTo
     }
     return (
         <form onSubmit={onFormSubmit}>
-      <input type="text" placeholder="What the Hell Task..."
+      <input type="text" placeholder="Whats needs to be done?"
       value={input} required onChange={onInputChange}
       name="" className="todo-todo__input"/>
         </form>
     )
 }
-
-// <button onClick={()=>()}>clear completed</button>
-// <button onClick={()=>()}>all</button>

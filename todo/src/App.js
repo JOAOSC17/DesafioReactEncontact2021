@@ -15,15 +15,15 @@ function App() {
   const [completeds, setCompleteds] = useState([]);
   const [actives, setActives] = useState([]);
   const [editTodo, setEditTodo] = useState(null);
-  useEffect(()=>{
-    localStorage.setItem("todos", JSON.stringify(todos));
-  },[todos]);
+  
+useEffect(()=>{
+  localStorage.setItem("todos", JSON.stringify(todos));
+},[todos]);
 useEffect(() => {
-    setActives(todos);
-    console.log(actives);
+  setActives(todos.filter(todo=> !todo.isDone));
 }, [todos]);
 useEffect(() => {
-  setCompleteds(todos);
+  setCompleteds(todos.filter(todo=>todo.isDone));
 }, [todos]);
   console.log(todos);
   return (
@@ -42,7 +42,7 @@ useEffect(() => {
        <PageCompleted  todos={todos} setTodos={setTodos} setEditTodo={setEditTodo} completeds={completeds} setCompleteds={setCompleteds}  />
      </Route>
      <Route path="/">
-       <ComponentsNavegationFilter todos={todos} setTodos={setTodos} actives={actives} setActives={setActives} />
+       <ComponentsNavegationFilter todos={todos} setTodos={setTodos} actives={actives} />
      </Route>
       </div>
     </div>

@@ -20,11 +20,12 @@ export default function PageAll({todos, setTodos, setEditTodo}) {
     return (
         <ul className="todo-todo__list">
         {todos.map((todo) =>
-        <li className="todo-todo__list-item" key={todo.id}>{todo.title}
-        <div>
-            <button onClick={()=>handleComplete(todo)}>{todo.isDone? 'checked' : 'check'}</button>
-            <button onClick={()=>handleEdit(todo)}>Edit</button>
-            <button onClick={()=>handleDelete(todo)}>Trash</button>
+        <li className="todo-todo__list-item" key={todo.id}>
+            <span className="todo-todo__list-item-title">{todo.title}</span>
+        <div className="todo-todo__list-item-btns">
+            <button onClick={()=>handleComplete(todo)}>{todo.isDone? (<i className="fas fa-check-square"></i>) : (<i className="far fa-check-square"></i>)}</button>
+            <button onClick={()=>handleEdit(todo)}><i className="far fa-edit"></i></button>
+            <button onClick={()=>handleDelete(todo)}><i className="far fa-trash-alt"></i></button>
         </div>
         </li>
           )}

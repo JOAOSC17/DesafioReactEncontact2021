@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 export default function PageCompleted({todos, setTodos, setEditTodo, completeds, setCompleteds}) {
         const handleComplete =(todo)=>{
@@ -20,10 +20,12 @@ export default function PageCompleted({todos, setTodos, setEditTodo, completeds,
     return (
         <ul className="todo-todo__list">
         {completeds.map(completed=>
-            <li className="todo-todo__list-item" key={completed.title}>{completed.title}   <div>
-            <button onClick={()=>handleComplete(completed)}>{completed.isDone? 'checked' : 'check'}</button>
-            <button onClick={()=>handleEdit(completed)}>Edit</button>
-            <button onClick={()=>handleDelete(completed)}>Trash</button>
+            <li className="todo-todo__list-item" key={completed.title}>
+                <span className="todo-todo__list-item-title">{completed.title}</span>
+            <div className="todo-todo__list-item-btns">
+            <button onClick={()=>handleComplete(completed)}>{completed.isDone? (<i className="fas fa-check-square"></i>) : (<i className="far fa-check-square"></i>)}</button>
+            <button onClick={()=>handleEdit(completed)}><i className="far fa-edit"></i></button>
+            <button onClick={()=>handleDelete(completed)}><i className="far fa-trash-alt"></i></button>
         </div>
         </li>
         )}
