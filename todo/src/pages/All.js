@@ -28,7 +28,7 @@ export default function PageAll({todos, setTodos, setEditTodo}) {
             <button onClick={()=>handleDelete(todo)}><i className="far fa-trash-alt"></i></button>
         </div>
         </li>
-          )}
+)}
         </ul>
     )
 }
